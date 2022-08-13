@@ -12,6 +12,8 @@ $verif=getverifadmin();
     <h1>ADMIN</h1>
     <?php echo $_SESSION["username"] ?>
     <a href="deconnexion.php"> Déconnexion </a>
+
+    
 </body>
 </html>
 
