@@ -1,7 +1,5 @@
 <?php
 session_start();
-include("connect.php");
-$connect=getconnect();
 ?>
 
 <!DOCTYPE <html>
@@ -34,6 +32,8 @@ $connect=getconnect();
 // L'on intéroge donc la variable indiquant cela et l'on signale la non connection en cas d'érreur'
 // En cas de succès l'on redirige alors vers les pages correspondantes à chaque compte'
 // ________________________________________________________________________________________________'
+include("connect.php");
+$connect=getconnect();
 try
 {
     $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");

@@ -1,6 +1,5 @@
 <?php
 session_start();
-session_destroy();
 ?>
 
 
@@ -30,6 +29,7 @@ session_destroy();
                 <input type="submit" name="save" value="S'inscrire">
             </div>
         </form>
+        <a href="login.php"> Se connecter</a>
     </div>
 </body>
 </html>
@@ -48,22 +48,22 @@ if(isset($_POST['save']))
     $prenom = $_POST['prenom'];
     $ville = $_POST['ville'];
     $username =$_POST['username'];
-    $id=$_POST['id_compte'];
     $key=$_POST['key'];
-
+    $redirect = header("location:deconnexion.php");
 
     $requete = $connexion->prepare("INSERT INTO login (username, password, nom, prenom, ville)
     VALUES (?, ?, ?, ?, ?);");
     $requete->execute(array($username, $key, $nom, $prenom, $ville));
-    $connexion->exec($requete);
+    $connexion->exec($requete, $redirect);
     exit();
-    header("location:login.php");
+    
 }
 }
 catch(PDOException $e)
 {
     echo  "Message:" . $e->getMessage();
 }
+
 
 ?>
 
