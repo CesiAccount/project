@@ -17,7 +17,7 @@
 </div>
 
 <ul id="myUL">
-  <li> Liste 0 </li>
+
 </ul>
 
 <script>
@@ -29,6 +29,7 @@ for (i = 0; i < myNodelist.length; i++) {
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
   span.className = "close";
+  span.className = "";
   span.appendChild(txt);
   myNodelist[i].appendChild(span);
 }
@@ -43,13 +44,7 @@ for (i = 0; i < close.length; i++) {
   }
 }
 
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
+
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
@@ -69,6 +64,7 @@ function newElement() {
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
+  
 
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
@@ -77,6 +73,9 @@ function newElement() {
     }
   }
 }
+
+//delete a item from the list 
+
 
 </script>
 
