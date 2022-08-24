@@ -11,9 +11,9 @@
 
 <body>
     <div id="myDIV" class="header">
-  <h2>My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
+  <h2>Mes listes</h2>
+  <input type="text" id="myInput" placeholder="Titre de la liste...">
+  <span onclick="newElement()" class="addBtn">Ajouter liste</span>
 </div>
 
 <ul id="myUL">
@@ -58,7 +58,7 @@ function newElement() {
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
   if (inputValue === '') {
-    alert("You must write something!");
+    alert("Donner un nom à la liste");
   } else {
     document.getElementById("myUL").appendChild(li);
   }
@@ -79,6 +79,8 @@ function newElement() {
 }
 
 </script>
+
+<?php include("footer.php")?>
 </body>
 
 

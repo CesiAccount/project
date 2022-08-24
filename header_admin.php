@@ -48,7 +48,7 @@
           <a href="#">Mes listes</a>
           <a href="#">Produits</a>
           <a href="#">Mon compte</a>
-          <a class="fa fa-sign-out" style="font-size:32px;color:#EDF2F4;float:right;", href="deconnexion.php"></a>
+          <a class="fa fa-sign-out" style="font-size:32px;color:#EDF2F4;float:right;" href="deconnexion.php"></a>
         </div>
   </header>
 

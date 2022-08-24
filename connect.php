@@ -38,7 +38,7 @@ function getverifuser()
             else
             {
                 echo "Erreur";
-                
+                header("location:deconnexion.php");
             }
 }
 function getverifadmin()
@@ -54,7 +54,7 @@ function getverifadmin()
             else
             {
                 echo "Erreur";
-                
+                header("location:deconnexion.php");
             }
 }
 ?>

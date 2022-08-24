@@ -7,7 +7,6 @@ session_start();
 
 <head>
     <?php include("header.php") ?>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <style>
@@ -15,7 +14,7 @@ session_start();
             width: 85%;
             height: 25px;
             margin-left: 5px;
-
+            position: right;
         }
 
         .first-section {
@@ -82,17 +81,9 @@ session_start();
                 </div>
         </fieldset>
         </form>
-
     </div>
-
-
-
-
 </body>
-
 </html>
-
-
 
 
 <?php
@@ -109,7 +100,7 @@ try {
             $id = $_POST["id"];
             $mdp = $_POST["mdp"];
 
-            $sql = "select id, username from login where username='" . $id . "' AND password='" . $mdp . "' ";
+            $sql = "select id, username, usertype from login where username='" . $id . "' AND password='" . $mdp . "' ";
 
             $result = mysqli_query($ms, $sql);
             $row = mysqli_fetch_array($result);

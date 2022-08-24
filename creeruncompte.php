@@ -1,12 +1,26 @@
 <?php include ("header.php") ?>
-
 <?php
 session_start();
 ?>
+<?php
+require 'vendor/autoload.php';
+use GuzzleHttp\Client;
+const API_URL = 'https://geo.api.gouv.fr/';
+if(!empty($_POST['zipcode']) && !empty($_POST['city']))
+{
+	$zipcode = strip_tags($_POST['zipcode']);
+	$city = strip_tags($_POST['city']);
 
+	$client = new GuzzleHttp\Client(['base_uri' => API_URL]);
 
+	$response = $client->request('GET', 'communes?codePostal='.$zipcode.'&fields=nom&format=json');
+	$response = json_decode($response->getBody()->getContents());
 
-<!DOCTYPE html>
+	$cities = [];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +60,7 @@ body {
 }
 
 .first-section input {
-  width: 85%;
+  width: 70%;
   height: 25px;
   margin-left: 5px;
 }
@@ -71,6 +85,8 @@ button {
   width: 120px;
 }
 .first-section {
+  margin-right: 180px;
+  float: right;
   margin-top: 15px;
   margin-left: 170px;
   background-color: #EDF2F4;
@@ -78,6 +94,9 @@ button {
   margin-bottom: 20px; 
 }
 .second-section {
+  margin-right: 160px;
+  position: relative;
+  float: right;
   margin-top: 15px;
   margin-left: 170px;
   background-color: #EDF2F4;
@@ -96,17 +115,25 @@ button {
   align-items: center;
 }
 .submit{
-    margin-top: 15px;
-  margin-left: 170px;
+  float: right;
+  width: 40%;
+  margin-top: 30px;
+  margin-right: 60px;
   color: #2B2D42;
 }
 .connection{
-    margin-top: 15px;
+  
+  margin-top: 50px;
   margin-left: 170px;
   color: #2B2D42; 
   background-color: #EDF2F4;
-  margin-left: 600px;
   position:center;
+}
+
+.ville{
+  width: 80%;
+  margin-right: 30px;
+  margin-left: 5px;
 }
 </style>    
 </head>
@@ -125,7 +152,6 @@ button {
         <div class="key">
                 <input type="password" id="key" name="key" placeholder="Mot de passe" required>
             </div>
-   
 </fieldset>
 
 <fieldset class="second-section">
@@ -138,20 +164,30 @@ button {
        <div class="prenom">
                 <input type="text" id="prenom" name="prenom" placeholder="Prenom" required>
             </div>
-    
-            <label for="name">Ville</label>
-            <div class="ville">
-                <input type="text" id="ville" name="ville" placeholder="Ville" required>
-            </div>
-    </fieldset>
-<div class="submit">
+            <div class="form-group">
+				    <label for="zipcode">Code Postal</label>
+				    <input type="text" name="zipcode" class="postal" placeholder="Code postal" id="zipcode" required>
+				    <div style="display: none; color: #f55;" id="error-message"></div>
+				  </div>
+
+				  <div class="form-group">
+				    <label for="city">Ville</label>
+				    <select class="ville" name="ville" id="city" required>
+				    </select>
+				  </div>
+          <div class="submit">
                 <input type="submit" id="button" name="save" value="S'inscrire">
             </div>
-        </form>
-        <br>
+            <br>
         <div class="connection">
         <a href="login.php"> Se connecter</a>
 </div>
+</fieldset>
+</form>
+
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="script.js"></script>
 </body>
 </html>
 
@@ -177,7 +213,8 @@ if(isset($_POST['save']))
     $requete->execute(array($username, $key, $nom, $prenom, $ville));
     $connexion->exec($requete, $redirect);
     exit();
-    
+    session_destroy();
+    header("location:deconnexion.php");
 }
 }
 catch(PDOException $e)
@@ -186,7 +223,9 @@ catch(PDOException $e)
 }
 
 
+
 ?>
+
 
 
 

@@ -3,7 +3,8 @@ include("connect.php");
 session_start();
 error_reporting(0);
 $verif=getverifuser();
-$readadmin=getaccount();
+$read=getaccount();
+$suppr=suppraccount();
 //echo $_SESSION["username"]//
 
 function getaccount()
@@ -21,6 +22,19 @@ function getaccount()
         echo $row[$i]." "."|"." ";
     }
     echo "<br>"."<br>";
+}
+
+function suppraccount()
+{
+    if(isset($_POST['suppr']))
+    {
+    $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+    $sql="delete * where username='".$_SESSION["username"]."';" ;
+
+    $result=mysqli_query($ms,$sql);
+    $row=mysqli_fetch_array($result);
+    header("location:deconnexion.php");
+    }
 }
 
 
@@ -62,6 +76,9 @@ function getaccount()
                     <input type="submit" name="modifier" value="Modifier">
                 </div>
             </form>
+            <div class="supprimer">
+                <input type="submit" name="suppr" value="Supprimer">
+            </div>
         </div>
 </body>
 </html>
