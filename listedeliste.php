@@ -1,85 +1,37 @@
-<!DOCTYPE <html>
-<html lang='en'>
+<?php include("header.php") ?>
+
+<!doctype html>
+<html lang="fr">
+<html>
 
 <head>
-    <?php include("header.php") ?>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="mystyle.css">
+    <meta charset="utf-8">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="/Annuaire.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jquery.ui/1.8.10/jquery-ui.js"></script>
 </head>
-
 <body>
-    <div id="myDIV" class="header">
-  <h2>Mes listes</h2>
-  <input type="text" id="myInput" placeholder="Titre de la liste...">
-  <span onclick="newElement()" class="addBtn">Ajouter liste</span>
-</div>
 
-<ul id="myUL">
+<form method='POST' action=''>
+<input type='text' name='username' placeholder='saisir votre pseudo' >
+<input type='text' name='nom_liste' placeholder='saisir le nom de la liste' >
+<input type="submit" value='créer une nouvelle liste' />
 
-</ul>
+<?php
+if(isset($_POST['username']) AND isset($_POST['nom_liste'])){
+   echo $_POST['username'];
+echo $_POST['nom_liste']; 
 
-<script>
-
-    // Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.className = "";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
+$ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1");
+$requete = $ms->prepare("INSERT INTO `liste` (`nom_liste`, `username`, `etat_liste`) VALUES ('?', '?', '1'))");
+$requete->execute(array($_POST['username']), $_POST['nom_liste']);
 }
-
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
-
-
-
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("Donner un nom à la liste");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-  
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
-
-//delete a item from the list 
-
-
-</script>
-
-<?php include("footer.php")?>
+?> 
+</form>
 </body>
-
-
+</html>

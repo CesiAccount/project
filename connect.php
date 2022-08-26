@@ -57,6 +57,22 @@ function getverifadmin()
                 header("location:deconnexion.php");
             }
 }
+function getverif()
+{
+    $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+    $sql="select * from login where username='".$_SESSION["username"]."';";
+    $result=mysqli_query($ms,$sql);
+    $row=mysqli_fetch_array($result);
+    if($row["usertype"]=="1")
+            {}
+    elseif($row["usertype"]=="2")
+            {}
+    else
+            {
+                echo "Erreur";
+                header("location:deconnexion.php");
+            }
+}
 ?>
 
 

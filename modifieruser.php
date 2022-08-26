@@ -1,5 +1,6 @@
 <?php
 include("connect.php");
+include("header.php");
 session_start();
 error_reporting(0);
 $verif=getverifuser();

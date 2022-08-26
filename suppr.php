@@ -17,6 +17,7 @@ if(isset($_GET['id']))
     if ($delete)
     {
         echo "Le compte à été Supprimer";
+    
     }
 }
 ?>

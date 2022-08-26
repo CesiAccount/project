@@ -3,15 +3,14 @@
 <html>
 <head>
 </head>
+<?php include("header.php")?>
 
-<body>
-   
-<?php include("header_admin.php")?>
 <?php
 session_start();
 include("connect.php");
 $verif=getverifadmin();
 $var=getallaccount();
+$list=getlist();
 
 function getallaccount()
 {   
@@ -19,7 +18,16 @@ function getallaccount()
     $select = $ms->query("select * from login;" );
     while($row = $select->fetch_array())
     {
-        echo "Id : ".$row[0]." User : ".$row[1]." Pass : ".$row[2]." Type : ".$row[3]." Nom : ".$row[4]." Prenom : ".$row[5]." Ville : ".$row[6]." <a href='suppr.php?id=".$row[0]."'>Supprimer</a><br>";
+        echo "Id : ".$row[0]." User : ".$row[1]." Pass : ".$row[2]." Type : ".$row[3]." Nom : ".$row[4]." Prenom : ".$row[5]." Ville : ".$row[6]."<br>";
+    }
+}
+function getlist()
+{   
+    $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+    $select = $ms->query("select * from list;" );
+    while($row = $select->fetch_array())
+    {
+        echo "Id : ".$row[0]." User : ".$row[1]." List : ".$row[2]."<br>";
     }
 }
 
@@ -41,18 +49,23 @@ function getallaccount()
     <label for="user">Choisir l'utilisateur souhaitee:</label>
     <select class="form-control" name="user">
         <?php
-        $result = mysqli_query($ms, "SELECT username FROM `login` ORDER BY username");
+        $result = mysqli_query($ms, "SELECT username FROM `login` WHERE usertype=1 ORDER BY username");
 
         while ($row = mysqli_fetch_array($result))
             echo "<option name='user' value='" . $row['username'] . "'>" . $row['username'] . "</option>";
         ?>
     </select>
-    <input type=submit value=Rendre_administrateur>
+    <input type=submit name="adminchange" value=Rendre_administrateur>
 </form>
 
     <?php 
-$admin = $ms->prepare(" UPDATE login SET usertype = '2'WHERE username =?  ");
-$admin->execute(array($_POST['user']));
+    if(isset($_POST['adminchange']))
+    {
+        $admin = $ms->prepare(" UPDATE login SET usertype = '2' WHERE username =?  ");
+        $admin->execute(array($_POST['user']));
+        header("location:adminhome.php");
+    }
+
 
 ?>
  
@@ -67,28 +80,31 @@ $admin->execute(array($_POST['user']));
     ?>
 <form method="POST" action="">
 <div class='container'>
-    <h2> Choisir l'utilisateur à basculer en user </h2>
+    <h2> Choisir l'utilisateur à basculer en utilisateur </h2>
     <label for="user">Choisir l'utilisateur souhaitee:</label>
     <select class="form-control" name="user">
         <?php
-        $result = mysqli_query($ms, "SELECT username FROM `login` ORDER BY username");
+        $result = mysqli_query($ms, "SELECT username FROM `login` WHERE usertype=2 ORDER BY username");
 
         while ($row = mysqli_fetch_array($result))
             echo "<option name='user' value='" . $row['username'] . "'>" . $row['username'] . "</option>";
         ?>
     </select>
-    <input type=submit value=Rendre_ustilisateur>
+    <input type=submit name="userchange" value=Rendre_utilisateur>
 </form>
 
     <?php 
-$admin = $ms->prepare(" UPDATE login SET usertype = '1'WHERE username =?  ");
-$admin->execute(array($_POST['user']));
+    if(isset($_POST['userchange']))
+    {
+        $admin = $ms->prepare(" UPDATE login SET usertype = '1'WHERE username =?  ");
+        $admin->execute(array($_POST['user']));
+        header("location:adminhome.php");
+    }
+
 
 ?>
-
-
-<?php
- #Afficher info d'un user
+ <?php
+ #Delete
     $ms = mysqli_connect("127.0.0.1:3307","root","","erin1");
     //Check connection
     if (mysqli_connect_errno()) {
@@ -97,7 +113,7 @@ $admin->execute(array($_POST['user']));
     ?>
 <form method="POST" action="">
 <div class='container'>
-    <h2> Choisir l'utilisateur pour voir les données </h2>
+    <h2> Choisir l'utilisateur à supprimer </h2>
     <label for="user">Choisir l'utilisateur souhaitee:</label>
     <select class="form-control" name="user">
         <?php
@@ -107,19 +123,27 @@ $admin->execute(array($_POST['user']));
             echo "<option name='user' value='" . $row['username'] . "'>" . $row['username'] . "</option>";
         ?>
     </select>
-    <input type=submit value=Information>
+    <input type=submit name="supprchange" value=Supprimer>
 </form>
 
     <?php 
-$info = $ms->prepare(" Select * FROM login WHERE username =?  ");
-$info->execute(array($_POST['user']));
-while($sel = $row = mysqli_fetch_array($result))
-{
-    echo "Id : ".$row[0]." User : ".$row[1]." Pass : ".$row[2]." Type : ".$row[3]." Nom : ".$row[4]." Prenom : ".$row[5]." Ville : ".$row[6]." <a href='suppr.php?id=".$row[0]."'>Supprimer</a><br>";
-}
+    if(isset($_POST['supprchange']))
+    {
+        $admin = $ms->prepare(" DELETE FROM `login` WHERE username=?;");
+        $admin->execute(array($_POST['user']));
+        header("location:adminhome.php");
+    }
+
 
 ?>
-</table>
+
+
+
+<body>
+    <h1>ADMIN</h1>
+    <?php echo $_SESSION["username"] ?>
+    <a href="deconnexion.php"> Déconnexion </a>
+
     
 </body>
 </html>

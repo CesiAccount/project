@@ -8,38 +8,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  .bodyy{
+    padding-top:0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+  }
+  </style>
 
 </head>
 
 <body>
-
-<div class="container my-5">
-
+<div class=bodyy>
+<div class="container my-1">
   <footer class="bg-dark text-center text-white">
   <!-- Grid container -->
   <div class="container p-4 pb-0">
     <!-- Section: Social media -->
     <section class="mb-4">
-      <!-- Database -->
-      <a class="btn btn-outline-light btn-floating m-1" href="https://fr.openfoodfacts.org/" role="button">
-        <i class="fa-solid fa-database"></i>
-      </a>
-
-      <!-- Mes listes -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fa-solid fa-list"></i>
-      </a>
-
-      <!-- Légal -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#" role="button"
-        ><i class="fa-solid fa-scale-balanced"></i>
-      </a>
-
-      <!-- Github -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-github"></i
-      ></a>
-    </section>
+        <p class="d-flex  align-items-center">
+          <span class="me-1">Envie de créer vos listes de courses en regardant l'aspect nutritif des aliments que vous achetez</span>
+          <button type="button" class="btn btn-outline-light btn-rounded">
+            S'inscrire ici
+          </button>
+        </p>
+      </section>
     <!-- Section: Social media -->
   </div>
   <!-- Grid container -->
@@ -53,6 +47,6 @@
   
 </div>
 <!-- End of .container -->
-
+</div>
 </body>
 </html>
