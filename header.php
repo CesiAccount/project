@@ -27,6 +27,7 @@
   .topnav a:hover {
     background-color: #D90429;
     color: black;
+    
   }
   
   .image { 
@@ -45,7 +46,7 @@
        
      </div>
           <a href="liste.php">Mes listes</a>
-          <a href="#">Produits</a>
+          <a href="produits.php">Produits</a>
           <a href="moncompte.php">Mon compte</a>
           <a class="fa fa-sign-out" style="font-size:32px;color:#EDF2F4;float:right;", href="deconnexion.php"></a>
         </div>

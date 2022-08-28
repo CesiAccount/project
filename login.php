@@ -56,7 +56,7 @@ session_start();
     <div class="f">
         <fieldset class="first-section">
             <form action="login.php" method="POST">
-                <legend>Détail du compte</legend>
+                <legend>Veuillez vous connecter afin d'accéder au site web</legend>
 
                 <div class="login">
                     <label> Identifiant</label>

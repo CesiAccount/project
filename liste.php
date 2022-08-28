@@ -11,11 +11,8 @@ session_start();?>
 </head>
 <body>
     <form action=liste.php method="POST">
-    <div class="compte">
-        <input type="text" id="username" name="username" disabled="disabled" value="<?php echo($_SESSION['username'])?>" required>
-    </div>
     <div class="wishlist">
-        <input type="text" id="wishlist" name="wislist" autocomplete="on" placeholder="Nom" required>
+        <input type="text" id="name" name="name" autocomplete="on" placeholder="Nom" required>
     </div>
     <div class="submit">
         <input type="submit" id="save" name="save" value="Créer">
@@ -34,31 +31,52 @@ $var=getlistuser();
 function getlistuser()
 {   
     $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
-    $select = $ms->query("select * from list where username='".$_SESSION["username"]."';" );
+    $select = $ms->query("select * from liste where username='".$_SESSION["username"]."';" );
     while($row = $select->fetch_array())
     {
-        echo "Id : ".$row[0]." User : ".$row[1]." List : ".$row[2]."<br>";
+        echo " List : ".$row[2]."<br>";
     }
+}
+
+$bdd = getconnect();
+if(isset($_POST['save']))
+{
+    $new = $bdd->prepare("INSERT INTO liste(username, name) VALUES(
+        ?, ?);");
+    $new->execute(array($_SESSION['username'],$_POST['name']));
+    header("location:liste.php");
 }
 
 
 
-$connexion = getconnect();
-if(isset($_POST['save']))
-{
-    $wishlist =$_POST["wishlist"];
-    $username =$_POST["username"];
-    $redirect = header("location:liste.php");
+# pour basculer en admin 
+$ms = mysqli_connect("127.0.0.1:3307","root","","erin1");
+//Check connection
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+?>
+<form method="POST" action="">
+<div class='container'>
+<h2> Choisir la liste </h2>
+<label for="user">Choisir la liste</label>
+<select class="form-control" name="user">
+    <?php
+    $result = mysqli_query($ms, "SELECT name FROM `liste` AND username='".$_SESSION["username"]."';");
 
-    $requete = $connexion->prepare("INSERT INTO list (username, wishlist)
-    VALUES (?, ?);");
-    $requete->execute(array($username, $wishlist));
-    $connexion->exec($requete, $redirect);
-    if(isset($requete))
-    {
-        echo "Créer";
-    }
-    exit();
+    while ($row = mysqli_fetch_array($result))
+        echo "<option name='user' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+    ?>
+</select>
+<input type=submit name="adminchange" value=Rendre_administrateur>
+</form>
+
+<?php 
+if(isset($_POST['adminchange'])) 
+{
+    $admin = $ms->prepare(" UPDATE login SET usertype = '2' WHERE username =?  ");
+    $admin->execute(array($_POST['user']));
+    header("location:adminhome.php");
 }
 
 
