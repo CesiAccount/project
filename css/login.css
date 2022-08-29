@@ -1,0 +1,38 @@
+.first-section input {
+    width: 85%;
+    height: 25px;
+    margin-left: 5px;
+    position: right;
+}
+
+.first-section {
+    margin-top: 1x;
+    margin-left: 170px;
+    background-color: #EDF2F4;
+    color: #2B2D42;
+    margin-bottom: 20px;
+
+}
+
+.submit:hover{
+    margin-top: 10px;
+font-family: sans-serif;
+color:#D90429;
+
+}
+.submit{
+    margin-top: 10px;
+font-family: sans-serif;
+
+}
+
+.card-footer {
+    margin-top: 20px;
+}
+
+
+.f {
+    background-image: url("https://previews.123rf.com/images/romastudio/romastudio1411/romastudio141100015/33709981-fond-de-la-nourriture-saine-studio-photo-de-diff%C3%A9rents-fruits-et-l%C3%A9gumes-sur-fond-blanc.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}

@@ -41,6 +41,7 @@ function getverifuser()
                 header("location:deconnexion.php");
             }
 }
+
 function getverifadmin()
 {
     $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");

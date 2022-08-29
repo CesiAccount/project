@@ -39,6 +39,17 @@ $verif = getverif();
     <div id="output"></div>
     </form>
     </fieldset>
+    <span id="js_one"></span>
+    <span id="js_result"></span>
+    
 </body>
 </html>
-
+<script src="main.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready( function()
+    {
+        get_users(1);
+        window.scrollTo(0, 0)
+    })
+</script>

@@ -32,110 +32,111 @@ if(!empty($_POST['zipcode']) && !empty($_POST['city']))
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"> 
+<link href="/css/creeruncompte.css" rel="stylesheet">   
 <style>
     * {
-  font-family: 'Montserrat', sans-serif;
-}
-
-body {
-  height: 80vh;
-  margin-top: 0rem;
-  background-image: url("https://previews.123rf.com/images/romastudio/romastudio1411/romastudio141100015/33709981-fond-de-la-nourriture-saine-studio-photo-de-diff%C3%A9rents-fruits-et-l%C3%A9gumes-sur-fond-blanc.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-
-}
-
-.form {
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 15px 25px;
- 
-  width: 80%;
-  margin: 0 auto;
-}
-
-.checkbox {
-  width: 20px !important;
-}
-
-.first-section input {
-  width: 70%;
-  height: 25px;
-  margin-left: 5px;
-}
-
-.second-section input{
-  width: 80%;
-  height: 25px;
-  margin-left: 5px;
-}
-
-.form h1, p {
-  text-align: center;
-}
-button {
-  border: none;
-  color: white;
-  background: #fff;
-  padding: 8px 25px;
-  border-radius: 5px;
-  display: block;
-  margin: 20px auto 10px auto;
-  width: 120px;
-}
-.first-section {
-  margin-right: 180px;
-  float: right;
-  margin-top: 15px;
-  margin-left: 170px;
-  background-color: #EDF2F4;
-  color: #2B2D42;
-  margin-bottom: 20px; 
-}
-.second-section {
-  margin-right: 160px;
-  position: relative;
-  float: right;
-  margin-top: 15px;
-  margin-left: 170px;
-  background-color: #EDF2F4;
-  color: #2B2D42;
-  margin-bottom: 20px; 
-}
-
-.proficiency {
-  display: flex;
-  align-items: center;
-}
-
-.terms {
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-}
-.submit{
-  float: right;
-  width: 40%;
-  margin-top: 30px;
-  margin-right: 60px;
-  color: #2B2D42;
-}
-.connection{
+    font-family: 'Montserrat', sans-serif;
+  }
   
-  margin-top: 50px;
-  margin-left: 170px;
-  color: #2B2D42; 
-  background-color: #EDF2F4;
-  position:center;
-}
-
-.ville{
-  width: 80%;
-  margin-right: 30px;
-  margin-left: 5px;
-}
-</style>    
+  body {
+    height: 80vh;
+    margin-top: 0rem;
+    background-image: url("https://previews.123rf.com/images/romastudio/romastudio1411/romastudio141100015/33709981-fond-de-la-nourriture-saine-studio-photo-de-diff%C3%A9rents-fruits-et-l%C3%A9gumes-sur-fond-blanc.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+  
+  }
+  
+  .form {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px 25px;
+   
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .checkbox {
+    width: 20px !important;
+  }
+  
+  .first-section input {
+    width: 70%;
+    height: 25px;
+    margin-left: 5px;
+  }
+  
+  .second-section input{
+    width: 80%;
+    height: 25px;
+    margin-left: 5px;
+  }
+  
+  .form h1, p {
+    text-align: center;
+  }
+  button {
+    border: none;
+    color: white;
+    background: #fff;
+    padding: 8px 25px;
+    border-radius: 5px;
+    display: block;
+    margin: 20px auto 10px auto;
+    width: 120px;
+  }
+  .first-section {
+    margin-right: 180px;
+    float: right;
+    margin-top: 15px;
+    margin-left: 170px;
+    background-color: #EDF2F4;
+    color: #2B2D42;
+    margin-bottom: 20px; 
+  }
+  .second-section {
+    margin-right: 160px;
+    position: relative;
+    float: right;
+    margin-top: 15px;
+    margin-left: 170px;
+    background-color: #EDF2F4;
+    color: #2B2D42;
+    margin-bottom: 20px; 
+  }
+  
+  .proficiency {
+    display: flex;
+    align-items: center;
+  }
+  
+  .terms {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+  }
+  .submit{
+    float: right;
+    width: 40%;
+    margin-top: 30px;
+    margin-right: 60px;
+    color: #2B2D42;
+  }
+  .connection{
+    
+    margin-top: 50px;
+    margin-left: 170px;
+    color: #2B2D42; 
+    background-color: #EDF2F4;
+    position:center;
+  }
+  
+  .ville{
+    width: 80%;
+    margin-right: 30px;
+    margin-left: 5px;
+  }
+</style>
 </head>
 
 

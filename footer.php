@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="main.css" rel="/css/footer.css">
 <style>
   .body{
     padding-top:0px;
-    margin-left: 0px;
+    margin-left: 10px;
     margin-right: 0px;
     margin-bottom: 0px;
   }
@@ -18,11 +19,13 @@
     margin-left: 0;
     margin-right: 0;
     width: 100%;
-    position: absolute;
+    position: center;
     bottom: 0;
   }
-  </style>
-
+  .btn btn-outline-light btn-rounded:hover{
+    background-color:#2B2D42 ;
+  }
+</style>
 </head>
 
 <body>

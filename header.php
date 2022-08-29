@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-.topnav {
+    <link href="/css/header.css" rel="stylesheet">
+    <style> .topnav {
     background-color:#2B2D42 ;
     overflow: hidden;
     text-align: center;
@@ -33,16 +33,14 @@
   .image { 
   position: left;
   }
-
-  
-    </style> 
+</style>
 
   </head>
   
   <header> 
       <div class="topnav">
        <div class="image">
-       <img src="vendor/logo.png", width="100px", height = "100px", href="#">
+       <img src="https://cdn.discordapp.com/attachments/1009496004892049521/1013529810607296582/logo.png" alt="logo" , width="100px", height = "100px" >	
        
      </div>
           <a href="liste.php">Mes listes</a>
@@ -51,7 +49,6 @@
           <a class="fa fa-sign-out" style="font-size:32px;color:#EDF2F4;float:right;", href="deconnexion.php"></a>
         </div>
   </header>
-
 
 <body>
 </body> 
