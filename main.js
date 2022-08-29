@@ -17,14 +17,14 @@ btn.onclick = () => {
 })}
 
 btnsearch.onclick = () => {
-    fetch("https://world.openfoodfacts.org/api/v2/search?categories_tags=" + search.value + "&fields=product_name")
+    fetch("https://world.openfoodfacts.org/api/v2/search?categories_tags=" + search.value)
     .then(search => search.json())
     .then(search2 => {
         output.textContent = "";
         output.textContent = JSON.parse(search2.products) ;
 })
 }  
-
+/*
 function get_users(pageid)
 { 
     var xhr = new XMLHttpRequest();
@@ -71,11 +71,11 @@ function get_users(pageid)
     xhr.send();
     
 }
-
-function get_one_product(produit)
+*/
+btn.onclick = () =>
 {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://fr.openfoodfacts.org?json=true&code="+produit, true);
+    xhr.open("GET", "https://fr.openfoodfacts.org?json=true&code="+ champ.value, true);
     xhr.onload = function()
     {
         var html = '';

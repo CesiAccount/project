@@ -39,9 +39,8 @@ $verif = getverif();
     <div id="output"></div>
     </form>
     </fieldset>
-    <span id="js_one"></span>
     <span id="js_result"></span>
-    
+    <span id="js_one"></span>
 </body>
 </html>
 <script src="main.js"></script>
