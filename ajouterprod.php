@@ -23,12 +23,10 @@
     <form method="POST" action="">
         <div class='container'>
             <button for="name">Ajouter dans la liste :
-              
 
             </button>
 
   <?php
-
                 $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
                 //Check connection
                 if (mysqli_connect_errno()) {
@@ -46,6 +44,14 @@
                 </select>
 
     </form>
-
-
+<?php
+    $bdd = getconnect();
+if(isset($_POST['save']))
+{
+    $new = $bdd->prepare("INSERT INTO article(username, nom_liste, nom_article, code_article, ) VALUES(
+        ?, ?, ?, ?);");
+    $new->execute(array($_SESSION['username'],$_POST['nom_liste'], ));
+    header("location:reussite.php");
+} 
+?>
 </body>

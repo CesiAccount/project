@@ -116,7 +116,7 @@ try {
     $ville = $_POST['ville'];
     $username = $_POST['username'];
     $key = $_POST['key'];
-    $redirect = header("location:deconnexion.php");
+    $redirect = header("location:reussite.php");
 
     $requete = $connexion->prepare("INSERT INTO login (username, password, nom, prenom, ville)
     VALUES (?, ?, ?, ?, ?);");
@@ -125,7 +125,7 @@ try {
       echo ('compte crée');
     exit();
     session_destroy();
-    header("location:deconnexion.php");
+    header("location:reussite.php");
   
   }
 } catch (PDOException $e) {

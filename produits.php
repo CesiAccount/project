@@ -1,6 +1,5 @@
 <?php include 'header.php'; 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +20,10 @@
 
 </head>
 <body>
+  
+<?php include 'codebarre.php' /* Ajouter un produit dans la wishlist par son code */ 
+?> 
+
     
     <fieldset class="section">
     <legend>Cherchez un produit avec son code barre :</legend>
@@ -42,70 +45,6 @@
 
     <span id="js_two"></span>
 
-
-
-<?php /* Ajouter un produit dans la wishlist par son code */ ?> 
-
-
-<fieldset class="section">
-    <form id="formulaire" action=produits.php method="POST">
-      <legend>Ajouter un produit par code</legend>
-      <label for="name">Code du produit</label>
-      <div class="username">
-        <input type="text" id="username" name="username" autocomplete="on" placeholder="User" required>
-      </div>
-      <div class="code">
-        <input type="text" id="code_article" name="code_article" autocomplete="on" placeholder="Code produit" required>
-      </div>
-      <label for="name">Nom du produit</label>
-      <div class="code">
-        <input type="text" id="nom_article" name="nom_article" autocomplete="on" placeholder="Nom produit" required>
-      </div>
-     <div class='liste' > 
-      <label for="mdp">Liste du produit</label>
-      <?php
-                $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
-                //Check connection
-                if (mysqli_connect_errno()) {
-                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                }
-                ?>
-
-                <select class="form-control" name="nom_liste'">
-                    <?php
-                    $result = mysqli_query($ms, "SELECT nom_liste FROM liste ");
-
-                    while ($row = mysqli_fetch_array($result))
-                        echo "<option name='nom_liste' value='" . $row['nom_liste'] . "'>" . $row['nom_liste'] . "</option>";
-                    ?>
-                </select>
-      </div>
-
-      <button type="submit" id="btncode"></i>Ajouter à la liste </button>
-      
-<?php
-include 'connect.php';
-error_reporting(0);
-
-try {
-  $connexion = getconnect();
-  if (isset($_POST['btncode'])) {
-    $username = $_POST[$_SESSION["username"]];
-    $nom_liste = $_POST['nom_liste'];
-    $nom_article = $POST['nom_article']; 
-    $code = $_POST['code_article'];
-    $requete = $connexion->prepare("INSERT INTO article (username, nom_liste, nom_article, code_article)  
-    VALUES (?, ?, ?, ?);");
-    $requete->execute(array($username, $nom_liste, $nom_article, $code));
-    $connexion->exec($requete, $redirect);
-      echo ('Produit ajouté');
-    exit();
-    }
-} catch (PDOException $e) {
-  echo  "Message:" . $e->getMessage();
-}
-?>
-  </fieldset>
 
   </form>
 
@@ -161,3 +100,4 @@ function getarticles()
 */
 ?>
 
+<?php include("footer.php") ?>

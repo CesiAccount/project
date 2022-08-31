@@ -10,7 +10,7 @@ function getconnect()
             $password = "";
             $data = new PDO('mysql:host=127.0.0.1:3307;dbname=erin1', $user, $password);
             $data->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Connect";
+            //echo "Connect";
             return $data;
             
 
