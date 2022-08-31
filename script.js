@@ -29,8 +29,7 @@ function get_users(pageid)
                     //html += '<tr>';  
                 }
                 html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name + '&nbsp;'+ current_user.brands +'<br><button id="ajouter">Add +</button>' +'</div>';
-                <iframe scr="ajouterprod.php"></iframe>
-            }
+                           }
             html +='</div>';
 
             var next_page = page_number < total_pages ? ' - <a onclick="return get_users(' + (page_number + 1) + '); return false;" href="javascript:none">Page suivante</a>' : ''; 

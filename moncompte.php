@@ -2,7 +2,7 @@
 include 'connect.php';
 session_start();
 $verif = getverif();
-include 'footer.php'; ?>
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,3 +70,4 @@ function deluser()
     }
 }
 ?>
+ <?php include("footer.php")?>

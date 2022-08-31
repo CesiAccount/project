@@ -35,9 +35,9 @@ function getarticles()
 $bdd = getconnect();
 if(isset($_POST['save']))
 {
-    $new = $bdd->prepare("INSERT INTO liste(username, name) VALUES(
+    $new = $bdd->prepare("INSERT INTO liste(username, nom_liste) VALUES(
         ?, ?);");
-    $new->execute(array($_SESSION['username'],$_POST['name']));
+    $new->execute(array($_SESSION['username'],$_POST['nom_liste']));
     header("location:liste.php");
 }
 

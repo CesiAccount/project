@@ -10,7 +10,11 @@ session_start();?>
     <title>Document</title>
 </head>
 <body>
+<div class='container'>
     <form action=liste.php method="POST">
+    <br>
+    <h2> Créer une Liste </h2>
+    <label for="user">Choisir le nom de la Liste:</label>
     <div class="wishlist">
         <input type="text" id="name" name="name" autocomplete="on" placeholder="Nom" required>
     </div>
@@ -18,6 +22,32 @@ session_start();?>
         <input type="submit" id="save" name="save" value="Créer">
     </div>
     </form>
+    <br>
+    <form method="POST" action="">
+
+    <h2> Choisir la Liste </h2>
+    <label for="user">Choisir la liste à supprimer:</label>
+    <select class="form-control" name="list">
+        <?php
+        $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+        $result = mysqli_query($ms, "SELECT nom_liste FROM `liste` WHERE username='" . $_SESSION["username"] . "' ORDER BY username;");
+        while ($row = mysqli_fetch_array($result))
+            echo "<option name='user' value='" . $row['nom_liste'] . "'>" . $row['nom_liste'] . "</option>";
+        ?>
+    </select>
+    <input type=submit name="suppr" value=Supprimer>
+</form>
+
+    <?php 
+    if(isset($_POST['suppr']))
+    {
+        $admin = $ms->prepare(" DELETE FROM `liste` WHERE nom_liste =?  ");
+        $admin->execute(array($_POST['list']));
+        header("location:liste.php");
+    }
+
+
+?>
 </body>
 </html>
 
@@ -41,14 +71,14 @@ function getlistuser()
 $bdd = getconnect();
 if(isset($_POST['save']))
 {
-    $new = $bdd->prepare("INSERT INTO liste(username, name) VALUES(
+    $new = $bdd->prepare("INSERT INTO liste(username, nom_liste) VALUES(
         ?, ?);");
     $new->execute(array($_SESSION['username'],$_POST['name']));
     header("location:liste.php");
 }
 
 
-
+/*
 # pour basculer en admin 
 $ms = mysqli_connect("127.0.0.1:3307","root","","erin1");
 //Check connection
@@ -79,5 +109,8 @@ if(isset($_POST['adminchange']))
     header("location:adminhome.php");
 }
 
+*/
 
 ?>
+
+<?php include("footer.php")?>
