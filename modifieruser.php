@@ -1,51 +1,62 @@
 <?php
 include("connect.php");
 include("header.php");
-session_start();
-error_reporting(0);
-$verif = getverifuser();
-$read = getaccount();
-$suppr = suppraccount();
-//echo $_SESSION["username"]//
-
-function getaccount()
-{
-    $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
-    $sql = "select username, nom, prenom, ville from login where username='" . $_SESSION["username"] . "';";
-
-    $result = mysqli_query($ms, $sql);
-    $row = mysqli_fetch_array($result);
-
-    echo "Identifiant | Nom | Prenom | Ville" . "\n";
-    echo "<br>" . "<br>";
-
-    for ($i = 0; $i < 4; $i++) {
-        echo $row[$i] . " " . "|" . " ";
-    }
-    echo "<br>" . "<br>";
-}
-
-function suppraccount()
-{
-    if (isset($_POST['suppr'])) {
-        $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
-        $sql = "delete * where username='" . $_SESSION["username"] . "';";
-
-        $result = mysqli_query($ms, $sql);
-        $row = mysqli_fetch_array($result);
-        header("location:deconnexion.php");
-    }
-}
-
-
 ?>
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="/css/modifieruser.css" rel="stylesheet">
 </head>
+
+<br><br>
+<?php
+
+session_start();
+error_reporting(0);
+
+$read = getaccount();
+$suppr = suppraccount();
+//echo $_SESSION["username"]//
+?>
+<div class='identite'>
+    <?php
+    function getaccount()
+    {
+        $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
+        $sql = "select username, nom, prenom, ville from login where username='" . $_SESSION["username"] . "';";
+
+        $result = mysqli_query($ms, $sql);
+        $row = mysqli_fetch_array($result);
+
+        echo "Identifiant | Nom | Prenom | Ville" . "\n";
+        echo "<br>" . "<br>";
+
+        for ($i = 0; $i < 4; $i++) {
+            echo $row[$i] . " " . "|" . " ";
+        }
+        echo "<br>" . "<br>";
+    }
+
+    function suppraccount()
+    {
+        if (isset($_POST['suppr'])) {
+            $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
+            $sql = "delete * where username='" . $_SESSION["username"] . "';";
+
+            $result = mysqli_query($ms, $sql);
+            $row = mysqli_fetch_array($result);
+            header("location:deconnexion.php");
+        }
+    }
+
+
+    ?>
+</div>
 
 <body>
     <div class=body>
@@ -112,14 +123,14 @@ function suppraccount()
                 echo  "Message:" . $e->getMessage();
             }
 
-                if (isset($_POST['supprimer'])) {
-                   
-                    $requete = $connexion->prepare("DELETE FROM `login`
+            if (isset($_POST['supprimer'])) {
+
+                $requete = $connexion->prepare("DELETE FROM `login`
                     WHERE $username = $_POST[username];");
-                    $requete->execute(array($username, $password1, $nom, $prenom, $ville));
-                    $connexion->exec($requete, $redirect);
-                }
-            
+                $requete->execute(array($username, $password1, $nom, $prenom, $ville));
+                $connexion->exec($requete, $redirect);
+            }
+
 
             ?>
 

@@ -28,7 +28,7 @@ function get_users(pageid)
                     html += '<div class="row">';
                     //html += '<tr>';  
                 }
-                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name + '&nbsp;'+ current_user.brands +'<br><button id="ajouter">Add +</button>' +'</div>';
+                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name +'&nbsp;'+ current_user.brands +'&nbsp;' + current_user.code +'<br><button id="ajouter" style="background-color:#000000">Add +</button>' +'</div>';
                            }
             html +='</div>';
 
@@ -73,7 +73,7 @@ btn.onclick = () =>
                     html += '<div class="row">';
                     //html += '<tr>';  
                 }
-                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name + '&nbsp;'+ current_user.brands + '<button id="ajouter">Add +</button>' +'</div>';
+                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name + '&nbsp;'+ current_user.brands + '<button id="ajouter" style="background-color:#000000">Add +</button>' +'</div>';
             }
             html +='</div>';
 
@@ -110,7 +110,7 @@ btnsearch.onclick = () =>
                     html += '<div class="row">';
                     //html += '<tr>';  
                 }
-                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name + '&nbsp;'+ current_user.brands + '<button id="ajouter">Add +</button>' +'</div>';
+                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name + '&nbsp;'+ current_user.brands + '<button id="ajouter" style="background-color:#000000">Add +</button>' +'</div>';
  
             }
             html +='</div>';

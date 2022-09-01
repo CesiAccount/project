@@ -55,15 +55,7 @@
     <div class="text">Ajout reussit</div>
   </div>
 </div>
-<form action="reussite.php" method="POST">
-  <input type="submit" id="ok" name="ok "value="Okay"></input>
-</form>
 
 </body>
 </html>
 
-<?php
-if(isset($_POST['ok'])){
-  $re= header("location:projet.php");
-}
-?>

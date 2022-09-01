@@ -2,7 +2,7 @@
 include 'connect.php';
 session_start();
 $verif = getverif();
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,60 +14,57 @@ $verif = getverif();
     <title>Document</title>
     <link href="/css/moncompte.css" rel="stylesheet">
 </head>
-<style>.section {
-    margin-left: 40%;
-    margin-right: 40%;
-    margin-top: 15px;
-    background-color: #EDF2F4;
-    color: #2B2D42;
-    margin-bottom: 20px; 
-}
-.mycount {
-    float: center;
-}</style>
+<style>
+    .section {
+        margin-left: 40%;
+        margin-right: 40%;
+        margin-top: 15px;
+        background-color: #EDF2F4;
+        color: #2B2D42;
+        margin-bottom: 20px;
+    }
+
+    .mycount {
+        float: center;
+    }
+</style>
+
 <body>
-
-</body>
-
-</html>
-<form action="$select">
-    <h2>Afficher les informations de mon comptes</h2>
-    <input type="submit" name="select" value="Informations du compte" onclick="getuser()" />
-</form>
-<?php
-$afficher = getuser();
-function getuser()
-{
-    $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
-    $select = $ms->query("select * from login where username='" . $_SESSION["username"] . "';");
-    while ($row = $select->fetch_array()) {
-?>
-        <fieldset class="section">
-            <div class="mycount">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                
+                <form action="$select">
+                    <h2>Afficher les informations de mon comptes</h2>
+                    <input type="submit" name="select" value="Informations du compte" onclick="getuser()" />
+                </form>
                 <?php
-                echo "Id : " . $row[0] . "<br> User : " . $row[1] . "<br> Pass : " . $row[2] . "<br> Type : " . $row[3] . "<br> Nom : " . $row[4] . "<br> Prenom : " . $row[5] . "<br> Ville : " . $row[6] . "<br>";
+                $afficher = getuser();
+                function getuser()
+                {
+                    $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
+                    $select = $ms->query("select * from login where username='" . $_SESSION["username"] . "';");
+                    while ($row = $select->fetch_array()) {
                 ?>
-            </div>
-        </fieldset>
-<?php
-    }
-}
-?>
+                        <fieldset class="section">
+                            <div class="mycount">
+                                <?php
+                                echo "Id : " . $row[0] . "<br> User : " . $row[1] . "<br> Pass : " . $row[2] . "<br> Type : " . $row[3] . "<br> Nom : " . $row[4] . "<br> Prenom : " . $row[5] . "<br> Ville : " . $row[6] . "<br>";
+                                ?>
+                            </div>
+                        </fieldset>
 
-<form action="$del">
-    <h2>Supprimer mon compte</h2>
-    <input type="submit" name="del" value="supprimer" onclick="deluser()" />
-</form>
-<?php
-$del = deluser();
-function deluser()
-{
-    $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
-    $select = $ms->query("DELETE * FROM `login`
-    WHERE  username='" . $_SESSION["username"] . "';");
-    while ($row = $select->fetch_array()) {
-        echo ('Compte supprimé');
-    }
-}
-?>
- <?php include("footer.php")?>
+                       <button>
+                             <a href="modifieruser.php">Modifier ou supprimer mon compte</a>
+                       </button> 
+                <?php
+                    }
+                }
+                ?>
+
+                            
+            </div>
+        </div>
+    </div>
+</body>
+<?php include("footer.php") ?>

@@ -1,0 +1,117 @@
+
+    * {
+        font-family: 'Montserrat', sans-serif;
+      }
+  
+      body {
+        height: 80vh;
+        margin-top: 0rem;
+        background-image: url("https://img.freepik.com/free-photo/fresh-parsley-and-vegetables_23-2147694205.jpg?w=2000");
+        background-repeat: no-repeat;
+        background-position: center;
+  
+      }
+  
+      .form {
+        background-color: #fff;
+        border-radius: 0px;
+        padding: 15px 25px;
+        width: 120%;
+        margin: 0 auto;
+      }
+  
+      .checkbox {
+        width: 20px !important;
+      }
+  
+      .first-section input {
+        width: 70%;
+        height: 25px;
+     
+      }
+  
+      .second-section input {
+        width: 80%;
+        height: 25px;
+        margin-left: 5px;
+      }
+  
+      .form h1,
+      p {
+        text-align: center;
+      }
+  
+      button {
+        border: none;
+        color: white;
+        background: #fff;
+        padding: 8px 25px;
+        border-radius: 5px;
+        display: block;
+        margin: 20px auto 10px auto;
+        width: 120px;
+      }
+  
+      .first-section {
+        margin-right: 150px;
+        float: right;
+        margin-top: 15px;
+        margin-left: 10px;
+        background-color: #EDF2F4;
+        color: #2B2D42;
+        margin-bottom: 20px;
+      }
+  
+      .second-section {
+        margin-right: 160px;
+        position: relative;
+        float: right;
+        margin-top: 15px;
+        margin-left: 170px;
+        background-color: #EDF2F4;
+        color: #2B2D42;
+        margin-bottom: 20px;
+      }
+  
+      .proficiency {
+        display: flex;
+        align-items: center;
+      }
+  
+      .terms {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+      }
+  
+      .submit {
+        float: right;
+        width: 40%;
+        margin-top: 30px;
+        margin-right: 60px;
+        color: #2B2D42;
+      }
+  
+      .supprimer {
+        float: right;
+        width: 40%;
+        margin-top: 30px;
+        margin-right: 60px;
+        color: #2B2D42;
+      }
+
+      .connection {
+        margin-top: 50px;
+        margin-left: 170px;
+        color: #EDF2F4;
+        background-color: #2B2D42;
+        position: center;
+      }
+  
+  
+      .ville {
+        width: 80%;
+        margin-right: 30px;
+        margin-left: 5px;
+      }
+  

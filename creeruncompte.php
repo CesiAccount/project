@@ -29,12 +29,127 @@ if (!empty($_POST['zipcode']) && !empty($_POST['city'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bootcamp Registration</title>
+  <title>Création d'un compte</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <link href="/css/creeruncompte.css" rel="stylesheet">
+  <style>
+    
+    * {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      height: 80vh;
+      margin-top: 0rem;
+      background-image: url("https://img.freepik.com/photos-premium/fond-nourriture-place-pour-texte-differents-types-pates-tomates-herbes-champignons-oeufs-assaisonnements-disperses-fond-marbre-clair-vue-dessus-concept-cuisine-italienne_90258-3592.jpg?w=2000");
+      background-repeat: no-repeat;
+      background-position: center;
+
+    }
+
+    .form {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 15px 25px;
+
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .checkbox {
+      width: 20px !important;
+    }
+
+    .first-section input {
+      width: 70%;
+      height: 25px;
+   
+    }
+
+    .second-section input {
+      width: 80%;
+      height: 25px;
+      margin-left: 5px;
+    }
+
+    .form h1,
+    p {
+      text-align: center;
+    }
+
+    button {
+      border: none;
+      color: white;
+      background: #fff;
+      padding: 8px 25px;
+      border-radius: 5px;
+      display: block;
+      margin: 20px auto 10px auto;
+      width: 120px;
+    }
+
+    .first-section {
+      margin-right: 150px;
+      float: right;
+      margin-top: 15px;
+      margin-left: 10px;
+      background-color: #EDF2F4;
+      color: #2B2D42;
+      margin-bottom: 20px;
+    }
+
+    .second-section {
+      margin-right: 160px;
+      position: relative;
+      float: right;
+      margin-top: 15px;
+      margin-left: 170px;
+      background-color: #EDF2F4;
+      color: #2B2D42;
+      margin-bottom: 20px;
+    }
+
+    .proficiency {
+      display: flex;
+      align-items: center;
+    }
+
+    .terms {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .submit {
+      float: right;
+      width: 40%;
+      margin-top: 30px;
+      margin-right: 60px;
+      color: #2B2D42;
+    }
+
+    .connection {
+
+      margin-top: 150px;
+      margin-left: 170px;
+      color: #2B2D42;
+      background-color: #EDF2F4;
+      position: center;
+    }
+
+
+    .ville {
+      width: 80%;
+      margin-right: 30px;
+      margin-left: 5px;
+    }
+
+
+    </style>
   
 </head>
 

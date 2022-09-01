@@ -83,4 +83,4 @@ try {
 }
 ?>
 
-<?php include("footer.php") ?>
+<?php include("footerlog.php") ?>

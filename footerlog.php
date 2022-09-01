@@ -19,8 +19,8 @@
           <!-- Section: Social media -->
           <section class="mb-4">
             <p class="d-flex  align-items-center">
-              <span class="me-1">Un problème ? Contactez-nous ! </span>
-              <a href="Contact.php"><input type="button" class="btn btn-outline-light btn-rounded" value="Contact" /></a>
+              <span class="me-1">Envie de créer vos listes de courses en regardant l'aspect nutritif des aliments que vous achetez</span>
+              <a href="creeruncompte.php"><input type="button" class="btn btn-outline-light btn-rounded" value="S'inscrire" /></a>
 
             </p>
           </section>

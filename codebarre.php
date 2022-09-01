@@ -33,7 +33,7 @@ use GuzzleHttp\Client;
 
 
     <fieldset class="first-section">
-        <form id="formulaire" action=projet.php method="POST">
+        <form id="formulaire" action=codebarre.php method="POST">
             <legend>Ajouter par code barre</legend>
             <label for="name">username</label>
             <div class="username">
@@ -110,4 +110,4 @@ try {
 }
 
 ?>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
