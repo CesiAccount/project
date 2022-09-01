@@ -1,5 +1,8 @@
 <?php include 'header.php'; 
-session_start();?>
+include("connect.php");
+session_start();
+$verif = getverif();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +28,7 @@ session_start();?>
     }
 
     .container{
-        
+    background-color: #EDF2F4;
       border-radius: 5px;
       padding: 15px 25px;
       width: 80%;
@@ -46,10 +49,59 @@ session_start();?>
         <input type="submit" id="save" name="save" value="Créer">
     </div>
     </form>
-    <br>
+
+    </form>
+
+    <?php /*
+
+<form method="POST" action="">
+<h2> Rechercher un article présent dans une liste par son nom  </h2>
+<label for="user">Choisir la liste a afficher:</label>
+<select class="form-control" name="rech">
+<div class='comp'>
+<?php
+    $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+    $result = mysqli_query($ms, "SELECT nom_liste FROM `liste` WHERE username='" . $_SESSION["username"] . "' ORDER BY username;");
+    while ($row = mysqli_fetch_array($result))
+        echo "<option name='user' value='" . $row['nom_liste'] . "'>" . $row['nom_liste'] . "</option>";
+?>
+</select>
+<input type="text" id="noma" name="noma" autocomplete="on" placeholder="Nom de l'article" required>
+<input type=submit name="rec" value=Recherche-liste>
+
+
+
+*/ ?>
+
+
+
+
+    <form method="POST" action="">
+    <h2> Supprimer un article contenu dans une liste </h2>
+<label for="user">Choisir la liste a afficher:</label>
+<select class="form-control" name="listad">
+<?php
+    $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+    $result = mysqli_query($ms, "SELECT nom_liste FROM `liste` WHERE username='" . $_SESSION["username"] . "' ORDER BY username;");
+    while ($row = mysqli_fetch_array($result))
+        echo "<option name='user' value='" . $row['nom_liste'] . "'>" . $row['nom_liste'] . "</option>";
+?>
+</select>
+
+<label for="user">Choisir l'element a supprimer:</label>
+<select class="form-control" name="listade">
+<?php
+    $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+    $result = mysqli_query($ms, "SELECT nom_article FROM `article` WHERE username='" . $_SESSION["username"] . "' ORDER BY nom_article;");
+    while ($row = mysqli_fetch_array($result))
+        echo "<option name='user' value='" . $row['nom_article'] . "'>" . $row['nom_article'] . "</option>";
+?>
+</select>
+<input type=submit name="retire" value='Retirer cet article '>
+    </form>
     <form method="POST" action="">
 
-    <h2> Choisir la Liste </h2>
+    <h2> Choisir la Liste a effacer</h2>
     <label for="user">Choisir la liste à supprimer:</label>
     <select class="form-control" name="list">
 <?php
@@ -76,7 +128,6 @@ session_start();?>
 ?>
 </select>
 <input type=submit name="develop" value=Developper>
-<div class="cc">
 <?php
     /*$liste = $_POST['lista'];
     echo("Dans la liste il y a :  ");
@@ -100,31 +151,10 @@ session_start();?>
      exit; 
    }
 ?>
-</div>
+
 </form>
-
 <form method="POST" action="">
-<h2> Supprimer un article contenu le contenu d'une liste </h2>
-<label for="user">Choisir la liste a afficher:</label>
-<select class="form-control" name="listad">
-<?php
-    $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
-    $result = mysqli_query($ms, "SELECT nom_liste FROM `liste` WHERE username='" . $_SESSION["username"] . "' ORDER BY username;");
-    while ($row = mysqli_fetch_array($result))
-        echo "<option name='user' value='" . $row['nom_liste'] . "'>" . $row['nom_liste'] . "</option>";
-?>
-</select>
 
-<label for="user">Choisir l'element a supprimer:</label>
-<select class="form-control" name="listade">
-<?php
-    $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
-    $result = mysqli_query($ms, "SELECT nom_article FROM `article` WHERE username='" . $_SESSION["username"] . "' ORDER BY nom_article;");
-    while ($row = mysqli_fetch_array($result))
-        echo "<option name='user' value='" . $row['nom_article'] . "'>" . $row['nom_article'] . "</option>";
-?>
-</select>
-<input type=submit name="retire" value='Retirer cet article '>
 <div class="cc">
 <?php
     /*$liste = $_POST['lista'];
@@ -151,8 +181,60 @@ session_start();?>
    }
 ?>
 </div>
-</form>
 
+<?php
+    /*$liste = $_POST['lista'];
+    echo("Dans la liste il y a :  ");
+    $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+    $select = $ms->query("select * from liste where liste = $lista AND username='".$_SESSION["username"]."';" );
+    while($row = $select->fetch_array())
+    {
+        echo " List : ".$row[2]."<br>";
+    }*/
+
+   $option = isset($_POST['lista']) ? $_POST['lista'] : false;
+   if ($option) {
+        $lista = $_POST['lista'];
+        $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+        $select = $ms->query("select nom_article from article where nom_liste ='".$lista."' AND username='".$_SESSION["username"]."';" );
+        while ($row = mysqli_fetch_array($select)){
+            echo "<div>'".$row['nom_article']."'</div><br>";
+        }
+   } else {
+     echo "task option is required";
+     exit; 
+   }
+?>
+
+</form>
+<?php /*
+<form method="POST" action="">
+<div class="cc">
+
+    /*$liste = $_POST['lista'];
+    echo("Dans la liste il y a :  ");
+    $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+    $select = $ms->query("select * from liste where liste = $lista AND username='".$_SESSION["username"]."';" );
+    while($row = $select->fetch_array())
+    {
+        echo " List : ".$row[2]."<br>";
+    }
+
+   $rech = isset($_POST['rech']) ? $_POST['rech'] : false; 
+   $norma = isset($_POST['norma']) ? $_POST['norma'] : false; 
+   if ($options && $optionss){
+        $rech = $_POST['rech'];
+        $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
+        $recherche = $ms->query("SELECt nom-produit FROM 'article' where nom_liste ='".$rech."' AND nom_article ='".$norma."' AND username='".$_SESSION["username"]."';" );
+        while ($row = mysqli_fetch_array($select)){
+            echo "$recherche";
+        }
+   } else {
+     echo " ";
+     exit; 
+   }
+
+</div>*/?>
 <?php 
     if(isset($_POST['suppr']))
     {
@@ -163,8 +245,8 @@ session_start();?>
 
 
 
-include("connect.php");
-$verif = getverif();
+
+
 $var=getlistuser();
 
 

@@ -1,17 +1,20 @@
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE <html>
 <html lang='en'>
 
 <head>
+    
     <?php include("header.php") ?>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
    
     <style>
  @import url("css/login.css");
     </style>
+<link rel="manifest" href="/manifest.json">
 </head>
 
 

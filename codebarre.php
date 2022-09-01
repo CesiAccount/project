@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 ?>
@@ -32,11 +31,11 @@ use GuzzleHttp\Client;
 
 
 
-    <fieldset class="first-section">
-        <form id="formulaire" action=codebarre.php method="POST">
-            <legend>Ajouter par code barre</legend>
-            <label for="name">username</label>
-            <div class="username">
+<fieldset class="first-section">
+    <form id="formulaire" action=codebarre.php method="POST">
+        <legend>Ajouter par code barre</legend>
+        <label for="name">username</label>
+        <div class="username">
             <select class="" name="username">
                 <?php
                 $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
@@ -44,43 +43,37 @@ use GuzzleHttp\Client;
                 while ($row = mysqli_fetch_array($result))
                     echo "<option name='user' value='" . $row['username'] . "'>" . $row['username'] . "</option>";
                 ?>
-                </select>
-            </div>
+            </select>
+        </div>
 
-            <label for="nom_liste">Nom liste</label>
-            <div class="prenom">
-                <select class="" name="nom_liste">
+        <label for="nom_liste">Nom liste</label>
+        <div class="prenom">
+            <select class="" name="nom_liste">
                 <?php
                 $ms = mysqli_connect("127.0.0.1:3307", "root", "", "erin1") or die("Connection failed");
                 $result = mysqli_query($ms, "SELECT nom_liste FROM `liste` WHERE username='" . $_SESSION["username"] . "' ORDER BY username;");
                 while ($row = mysqli_fetch_array($result))
                     echo "<option name='user' value='" . $row['nom_liste'] . "'>" . $row['nom_liste'] . "</option>";
                 ?>
-                </select>
-            </div>
+            </select>
+        </div>
 
-            <div class="form-group">
-                <label for="Nom_article">Nom Article</label>
-                <div class="nom">
-                    <input type="text" id="nom_article" name="nom_article" placeholder="Nom Article" required>
-                </div>
+        <div class="form-group">
+            <label for="Nom_article">Nom Article</label>
+            <div class="nom">
+                <input type="text" id="nom_article" name="nom_article" placeholder="Nom Article" required>
             </div>
-
-            <div class="form-group">
-                <label for="code_article">Code Article</label>
-                <div class="code_article">
-                    <input type="text" id="code_article" name="code_article" placeholder="Code Article" required>
-                </div>
-            </div> 
-            <div class="form-group">
-                <div class="submit">
-                    <input type="submit" id="button" name="save" value="Ajouter par code">
-                </div>
+            <label for="code_article">Code Article</label>
+            <div class="code_article">
+                <input type="text" id="code_article" name="code_article" placeholder="Code Article" required>
             </div>
-        </form>
-    </fieldset>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="vendor/script.js"></script>
+                <input type="submit" id="button" name="save" value="Ajouter">
+            
+        </div>
+    </form>
+</fieldset>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="vendor/script.js"></script>
 
 
 
@@ -110,4 +103,3 @@ try {
 }
 
 ?>
-

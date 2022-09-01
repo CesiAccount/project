@@ -20,7 +20,11 @@
             margin-top: 15px;
             background-color: #EDF2F4;
             color: #2B2D42;
-            margin-bottom: 20px;
+            
+        }
+        .marge {
+            margin-top: 10px;
+            margin-left: 10px;
         }
     </style>
 
@@ -44,19 +48,20 @@
                     <div id="outputcategorie"></div>
                     <div id="outputimage"></div>
                     <br>
-                    <form>
+                    
                     <legend>Cherchez un produit avec sa catégorie :</legend>
-                        <input type="text" id="search" required>
-                        <button type="submit" id="btnsearch" style="background-color:#000000"></i>GO</button>
-                        <div id="output"></div>
-                    </form>
+                    <input type="text" id="search" required>
+                    <button id="btnsearch" style="background-color:#000000"></i>GO</button>
+                    <div id="output"></div>
+                    
                 </fieldset>
                 <span id="js_one"></span>
+                <span id="js_two"></span>
                 <span id="js_result"></span>
 
-                <span id="js_two"></span>
+               
 
-                </form>
+                
             </div>
         </div>
     </div>

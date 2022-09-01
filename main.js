@@ -28,7 +28,7 @@ function get_users(pageid)
                     html += '<div class="row">';
                     //html += '<tr>';  
                 }
-                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name +'&nbsp;'+ current_user.brands +'<br>' + current_user.code +'<br><button id="ajouter">Add +</button>' +'</div>';
+                html +=  '<div class="col-6 col-md-3" id="colonne">' + '<div class="marge">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name +'&nbsp;'+ current_user.brands +'<br>' + current_user.code + '</div></div>';
                            }
             html +='</div>';
 
@@ -73,7 +73,7 @@ btn.onclick = () =>
                     html += '<div class="row">';
                     //html += '<tr>';  
                 }
-                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name + '&nbsp;'+ current_user.brands + '<button id="ajouter">Add +</button>' +'</div>';
+                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name + '&nbsp;'+ current_user.brands +'<br>' + current_user.code +'</div>';
             }
             html +='</div>';
 
@@ -86,7 +86,7 @@ btn.onclick = () =>
 btnsearch.onclick = () =>
 {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://fr.openfoodfacts.org/?json=true&categories_tags="+search.value, true);
+    xhr.open("GET", "https://fr.openfoodfacts.org/?json=true&categories_tags="+ search.value, true);
     xhr.onload = function()
     {
         var html = '';
@@ -110,7 +110,7 @@ btnsearch.onclick = () =>
                     html += '<div class="row">';
                     //html += '<tr>';  
                 }
-                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name + '&nbsp;'+ current_user.brands + '<button id="ajouter">Add +</button>' +'</div>';
+                html += ' <div class="col-6 col-md-3" id="colonne">' + '<img src="'+ current_user.image_url + '" / height="300" width="250"><br>'+ '<div id="qte">' + current_user.quantity + '</div>' +'&nbsp;' +current_user.product_name + '&nbsp;'+ current_user.brands +'<br>' + current_user.code + '</div>';
  
             }
             html +='</div>';
