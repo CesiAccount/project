@@ -14,8 +14,15 @@ session_start();
     <style>
  @import url("css/login.css");
     </style>
-    <script src="vendor/app.js"></script>
+<script src="javascript.js"></script>
+<script src="./serviceWorker.js"></script>
 <link rel="manifest" href="/manifest.json">
+    <script>
+        if('serviceWorker' in navigator){ navigator.serviceWorker.register('serviceWorker.js')
+            .then( (sw) => console.log('Le Service Worker a été enregistrer', sw))
+            .catch((err) => console.log('Le Service Worker est introuvable !!!', err));
+        }
+    </script>
 </head>
 
 

@@ -1,86 +1,29 @@
-var cacheName = 'cache_v2';
-var filesToCache = [
-    '/',
-    'login.php',
-    'adminhome.php',
-    'codebarre.php',
-    'connect.php',
-    'Contact.php',
-    'crerruncompte.php',
-    'deconnexion.php',
-    'footer.php',
-    'footerlog.php',
-    'header.php',
-    'header.php',
-    'liste.php',
-    'login.php',
-    'main.js',
-    'modifieruser.php',
-    'moncompte.php',
-    'produits',
-    'reussite.php',
-    'userhome.php'
-];
-
-// install service worker
-self.addEventListener('install', function(e) {
-    console.log('[ServiceWorker] Install');
-    e.waitUntil(
-        caches.open(cacheName).then(function(cache) {
-            console.log('[ServiceWorker] Caching app shell');
-            return cache.addAll(filesToCache);
+//Installation du service worker
+self.addEventListener('install', evt => {
+    evt.waitUntil(caches.open(project).then(cache => {
+            cache.addAll(project);
         })
-    );
+    )
+
 });
 
-// active service worker
-self.addEventListener('activate', function(e) {
-    console.log('[ServiceWorker] Activate');
-    e.waitUntil(
-        caches.keys().then(function(keyList) {
-            return Promise.all(keyList.map(function(key) {
-                if (key !== cacheName) {
-                    console.log('[ServiceWorker] Removing old cache', key);
-                    return caches.delete(key);
-                }
-            }));
-        })
-    );
-    return self.clients.claim();
-});;
+//Activation du Service Worker
 
+self.addEventListener('activate', evt => {
+    console.log('le Service Worker a été installé ');
+});
 
-
+//fetch event afin de répondre quand on est en mode hors ligne.
 self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.match(event.request)
-            .then(function(response) {
-                // Cache hit - return response
-                if (response) {
+        caches.open('project').then(function(cache) {
+            return cache.match(event.request).then(function (response) {
+                return response || fetch(event.request).then(function(response) {
+                    cache.put(event.request, response.clone());
                     return response;
-                }
-
-                return fetch(event.request).then(
-                    function(response) {
-                        // Check if we received a valid response
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-
-                        // IMPORTANT: Clone the response. A response is a stream
-                        // and because we want the browser to consume the response
-                        // as well as the cache consuming the response, we need
-                        // to clone it so we have two streams.
-                        var responseToCache = response.clone();
-
-                        caches.open(cacheName)
-                            .then(function(cache) {
-                                cache.put(event.request, responseToCache);
-                            });
-
-                        return response;
-                    }
-                );
-            })
+                });
+            });
+        })
     );
 });
+

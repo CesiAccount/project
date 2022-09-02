@@ -9,16 +9,40 @@
     "theme_color": "white",
     "orientation": "portrait-primary",
     "icons": [
-        {
-            "src": "logo/logo2.png",
-            "type": "image/png",
-            "size": "144x144",
-            "purpose": "any"
-        },
-        {
-            "src": "vendor/logo.png",
-            "type": "image/png",
-            "size": "500x500"
-        }
-    ]
+         {
+      "src": "/vendor/logo 96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/vendor/logo 128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/vendor/logo144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/vendor/logo 152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "/vendor/logo 192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/vendor/logo 384.png",
+      "type": "image/png",
+      "sizes": "384x384"
+    },
+    {
+      "src": "/vendor/logo 512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+]
 }

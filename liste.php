@@ -16,6 +16,7 @@ $verif = getverif();
         <script src="https://kit.fontawesome.com/af1ca8f634.js" crossorigin="anonymous"></script>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
 <title>Listes </title>
     <title>Document</title>
     <style>
