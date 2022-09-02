@@ -34,7 +34,7 @@
   position: left;
   }
 </style>
-
+<link rel="manifest" href="/manifest.json">
   </head>
   
   <header> 

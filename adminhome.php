@@ -2,15 +2,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="manifest" href="/manifest.json">;
+<link href="css/admin.css" rel="stylesheet">
+<style> 
+.footer{
+  
+  background-color: #2B2D42;
+  color: #EDF2F4;
+}
+</style>
 </head>
+<body>
 <?php include("header.php")?>
-
+<h2>Voir les comptes utilisateurs</h2>
 <?php
 session_start();
 include("connect.php");
 $verif=getverifadmin();
 $var=getallaccount();
-$list=getlist();
+
 
 function getallaccount()
 {   
@@ -21,10 +31,14 @@ function getallaccount()
         echo "Id : ".$row[0]." User : ".$row[1]." Pass : ".$row[2]." Type : ".$row[3]." Nom : ".$row[4]." Prenom : ".$row[5]." Ville : ".$row[6]."<br>";
     }
 }
+?>
+<h2> Listes créer par les utilisateurs </h2>
+<?php
+$list=getlist();
 function getlist()
 {   
     $ms = mysqli_connect("127.0.0.1:3307","root","","erin1") or die("Connection failed");
-    $select = $ms->query("select * from list;" );
+    $select = $ms->query("select * from liste;" );
     while($row = $select->fetch_array())
     {
         echo "Id : ".$row[0]." User : ".$row[1]." List : ".$row[2]."<br>";
@@ -136,14 +150,13 @@ function getlist()
 
 
 ?>
-
-
-
-<body>
-    <h1>ADMIN</h1>
-    <?php echo $_SESSION["username"] ?>
+<footer>
+    <div class ='footer'>
+     <?php echo $_SESSION["username"] ?>
     <a href="deconnexion.php"> Déconnexion </a>
-
+    </div>
+</footer>
+      
     
 </body>
 </html>

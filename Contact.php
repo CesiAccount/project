@@ -14,6 +14,7 @@
         background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-food-western-food-simple-poster-background-image_25130.jpg");
     }
 </style>    
+<link rel="manifest" href="/manifest.json">
 </head>
 <html>
 <body>

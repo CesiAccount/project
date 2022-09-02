@@ -14,6 +14,7 @@ session_start();
     <style>
  @import url("css/login.css");
     </style>
+    <script src="vendor/app.js"></script>
 <link rel="manifest" href="/manifest.json">
 </head>
 
@@ -48,6 +49,7 @@ session_start();
         </fieldset>
         </form>
     </div>
+    
 </body>
 </html>
 

@@ -2,6 +2,7 @@
     "name": "Make My Shop",
     "short_name": "MMS",
     "lang":"fr",
+    "id": "/login.php",
     "start_url": "/login.php",
     "display": "standalone",
     "background_color": "white",
@@ -11,7 +12,8 @@
         {
             "src": "logo/logo2.png",
             "type": "image/png",
-            "size": "144x144"
+            "size": "144x144",
+            "purpose": "any"
         },
         {
             "src": "vendor/logo.png",
